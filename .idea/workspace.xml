@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cc88b877-4fa0-48e2-b99f-243a2a1c5f69" name="Changes" comment="setting html structure of proj and main function" />
+    <list default="true" id="cc88b877-4fa0-48e2-b99f-243a2a1c5f69" name="Changes" comment="add updating func" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -81,7 +81,7 @@
       <option name="presentableId" value="Default" />
       <updated>1740735086051</updated>
       <workItem from="1740735087144" duration="1005000" />
-      <workItem from="1740736458372" duration="1605000" />
+      <workItem from="1740736458372" duration="2205000" />
     </task>
     <task id="LOCAL-00001" summary="setting structure of proj">
       <option name="closed" value="true" />
@@ -107,7 +107,15 @@
       <option name="project" value="LOCAL" />
       <updated>1740737286638</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="add updating func">
+      <option name="closed" value="true" />
+      <created>1740738495161</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1740738495161</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -116,6 +124,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="setting structure of proj" />
     <MESSAGE value="setting html structure of proj and main function" />
-    <option name="LAST_COMMIT_MESSAGE" value="setting html structure of proj and main function" />
+    <MESSAGE value="add updating func" />
+    <option name="LAST_COMMIT_MESSAGE" value="add updating func" />
   </component>
 </project>

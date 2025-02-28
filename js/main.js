@@ -40,6 +40,25 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
 
                 this.saveData();
+            },
+
+            moveCard(cardIndex, fromColumnIndex, toColumnIndex) {
+                const fromColumn = [this.column1, this.column2, this.column3][fromColumnIndex];
+                const toColumn = [this.column1, this.column2, this.column3][toColumnIndex];
+                const card = fromColumn.splice(cardIndex, 1)[0];
+                toColumn.push(card);
+
+                if (fromColumnIndex === 0 && this.column2.length >= 5) {
+                    this.lockColumn(0);
+                }
+            },
+            lockColumn(columnIndex) {
+                const column = [this.column1, this.column2, this.column3][columnIndex];
+                column.forEach(card => {
+                    card.items.forEach(item => {
+                        item.completed = true;
+                    });
+                });
             }
         }
     });
