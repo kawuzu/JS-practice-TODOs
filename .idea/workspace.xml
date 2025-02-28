@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cc88b877-4fa0-48e2-b99f-243a2a1c5f69" name="Changes" comment="setting structure of proj">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/main.js" afterDir="false" />
-    </list>
+    <list default="true" id="cc88b877-4fa0-48e2-b99f-243a2a1c5f69" name="Changes" comment="setting html structure of proj and main function" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -85,7 +81,7 @@
       <option name="presentableId" value="Default" />
       <updated>1740735086051</updated>
       <workItem from="1740735087144" duration="1005000" />
-      <workItem from="1740736458372" duration="756000" />
+      <workItem from="1740736458372" duration="1605000" />
     </task>
     <task id="LOCAL-00001" summary="setting structure of proj">
       <option name="closed" value="true" />
@@ -103,7 +99,15 @@
       <option name="project" value="LOCAL" />
       <updated>1740735878190</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="setting html structure of proj and main function">
+      <option name="closed" value="true" />
+      <created>1740737286638</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1740737286638</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -111,6 +115,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="setting structure of proj" />
-    <option name="LAST_COMMIT_MESSAGE" value="setting structure of proj" />
+    <MESSAGE value="setting html structure of proj and main function" />
+    <option name="LAST_COMMIT_MESSAGE" value="setting html structure of proj and main function" />
   </component>
 </project>

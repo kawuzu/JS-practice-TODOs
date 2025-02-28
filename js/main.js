@@ -25,6 +25,21 @@ document.addEventListener('DOMContentLoaded', function () {
                 } else if (columnIndex === 1 && this.column2.length < 5) {
                     this.column2.push(newCard);
                 }
+            },
+            updateCardStatus(cardIndex, columnIndex) {
+                const column = [this.column1, this.column2, this.column3][columnIndex];
+                const card = column[cardIndex];
+                const completedCount = card.items.filter(item => item.completed).length;
+                const totalItems = card.items.length;
+
+                if (columnIndex === 0 && completedCount > totalItems / 2) {
+                    this.moveCard(cardIndex, columnIndex, 1);
+                } else if (columnIndex === 1 && completedCount === totalItems) {
+                    card.completedDate = new Date().toLocaleString();
+                    this.moveCard(cardIndex, columnIndex, 2);
+                }
+
+                this.saveData();
             }
         }
     });
