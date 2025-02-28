@@ -1,10 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Приложение для заметок</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script defer src="js/main.js"></script>
 </head>
 <body>
-
+<div id="app">
+    <div class="columns">
+        <div class="column column-new">
+            <h2>столбец 1</h2>
+            <div v-for="(card, index) in column1" :key="card.id" class="card">
+                <h3>{{ card.title }}</h3>
+                <ul>
+                    <li v-for="(item, i) in card.items" :key="i">
+                        <input type="checkbox" v-model="item.completed" @change="updateCardStatus(index, 0)">
+                        <span :class="{ completed: item.completed }">{{ item.text }}</span>
+                    </li>
+                </ul>
+                <p v-if="card.completedDate">завершено: {{ card.completedDate }}</p>
+            </div>
+            <button @click="addCard(0)" :disabled="column1.length >= 3">добавить карточку</button>
+            <p v-if="column1.length >= 3" class="warning">нельзя завести больше карточек</p>
+        </div>
+        <div class="column column-in-process">
+            <h2>столбец 2</h2>
+            <div v-for="(card, index) in column2" :key="card.id" class="card">
+                <h3>{{ card.title }}</h3>
+                <ul>
+                    <li v-for="(item, i) in card.items" :key="i">
+                        <input type="checkbox" v-model="item.completed" @change="updateCardStatus(index, 1)">
+                        <span :class="{ completed: item.completed }">{{ item.text }}</span>
+                    </li>
+                </ul>
+                <p v-if="card.completedDate">Завершено: {{ card.completedDate }}</p>
+            </div>
+            <button @click="addCard(1)" :disabled="column2.length >= 5">добавить карточку</button>
+            <p v-if="column2.length >= 5" class="warning">нельзя завести больше карточек</p>
+        </div>
+        <div class="column column-completed">
+            <h2>столбец 3</h2>
+            <div v-for="(card, index) in column3" :key="card.id" class="card">
+                <h3>{{ card.title }}</h3>
+                <ul>
+                    <li v-for="(item, i) in card.items" :key="i">
+                        <input type="checkbox" v-model="item.completed" @change="updateCardStatus(index, 2)">
+                        <span :class="{ completed: item.completed }">{{ item.text }}</span>
+                    </li>
+                </ul>
+                <p class="completed-time" v-if="card.completedDate">завершено: {{ card.completedDate }}</p>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
