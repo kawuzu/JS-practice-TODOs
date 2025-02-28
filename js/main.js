@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 } else if (columnIndex === 1 && this.column2.length < 5) {
                     this.column2.push(newCard);
                 }
+                this.saveData();
             },
             updateCardStatus(cardIndex, columnIndex) {
                 const column = [this.column1, this.column2, this.column3][columnIndex];
@@ -59,7 +60,27 @@ document.addEventListener('DOMContentLoaded', function () {
                         item.completed = true;
                     });
                 });
+            },
+            saveData() {
+                localStorage.setItem('notesAppData', JSON.stringify({
+                    column1: this.column1,
+                    column2: this.column2,
+                    column3: this.column3,
+                    nextCardId: this.nextCardId
+                }));
+            },
+            loadData() {
+                const data = JSON.parse(localStorage.getItem('notesAppData'));
+                if (data) {
+                    this.column1 = data.column1;
+                    this.column2 = data.column2;
+                    this.column3 = data.column3;
+                    this.nextCardId = data.nextCardId;
+                }
             }
+        },
+        mounted() {
+            this.loadData();
         }
     });
 });

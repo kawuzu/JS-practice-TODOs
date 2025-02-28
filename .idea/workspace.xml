@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cc88b877-4fa0-48e2-b99f-243a2a1c5f69" name="Changes" comment="add updating func" />
+    <list default="true" id="cc88b877-4fa0-48e2-b99f-243a2a1c5f69" name="Changes" comment="add updating func">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/main.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -82,6 +85,7 @@
       <updated>1740735086051</updated>
       <workItem from="1740735087144" duration="1005000" />
       <workItem from="1740736458372" duration="2205000" />
+      <workItem from="1740756011196" duration="772000" />
     </task>
     <task id="LOCAL-00001" summary="setting structure of proj">
       <option name="closed" value="true" />
