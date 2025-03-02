@@ -30,13 +30,23 @@ document.addEventListener('DOMContentLoaded', function () {
             updateCardStatus(cardIndex, columnIndex) {
                 const column = [this.column1, this.column2, this.column3][columnIndex];
                 const card = column[cardIndex];
+
+                // Обновляем таймстамп для отмеченного пункта
+                card.items.forEach(item => {
+                    if (item.completed && !item.timestamp) {
+                        item.timestamp = this.getCurrentTimestamp();
+                    } else if (!item.completed) {
+                        item.timestamp = null;
+                    }
+                });
+
                 const completedCount = card.items.filter(item => item.completed).length;
                 const totalItems = card.items.length;
 
                 if (columnIndex === 0 && completedCount > totalItems / 2) {
                     this.moveCard(cardIndex, columnIndex, 1);
                 } else if (columnIndex === 1 && completedCount === totalItems) {
-                    card.completedDate = new Date().toLocaleString();
+                    card.completedDate = this.getCurrentTimestamp();
                     this.moveCard(cardIndex, columnIndex, 2);
                 }
 
@@ -58,6 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 column.forEach(card => {
                     card.items.forEach(item => {
                         item.completed = true;
+                        item.timestamp = this.getCurrentTimestamp();
                     });
                 });
             },
@@ -77,6 +88,10 @@ document.addEventListener('DOMContentLoaded', function () {
                     this.column3 = data.column3;
                     this.nextCardId = data.nextCardId;
                 }
+            },
+            getCurrentTimestamp() {
+                const now = new Date();
+                return now.toLocaleString();
             }
         },
         mounted() {

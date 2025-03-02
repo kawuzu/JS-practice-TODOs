@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cc88b877-4fa0-48e2-b99f-243a2a1c5f69" name="Changes" comment="add updating func">
+    <list default="true" id="cc88b877-4fa0-48e2-b99f-243a2a1c5f69" name="Changes" comment="add save and load func">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/main.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -85,7 +87,9 @@
       <updated>1740735086051</updated>
       <workItem from="1740735087144" duration="1005000" />
       <workItem from="1740736458372" duration="2205000" />
-      <workItem from="1740756011196" duration="772000" />
+      <workItem from="1740756011196" duration="2646000" />
+      <workItem from="1740814301713" duration="917000" />
+      <workItem from="1740890697344" duration="1018000" />
     </task>
     <task id="LOCAL-00001" summary="setting structure of proj">
       <option name="closed" value="true" />
@@ -119,7 +123,15 @@
       <option name="project" value="LOCAL" />
       <updated>1740738495161</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="add save and load func">
+      <option name="closed" value="true" />
+      <created>1740756946542</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1740756946542</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -129,6 +141,7 @@
     <MESSAGE value="setting structure of proj" />
     <MESSAGE value="setting html structure of proj and main function" />
     <MESSAGE value="add updating func" />
-    <option name="LAST_COMMIT_MESSAGE" value="add updating func" />
+    <MESSAGE value="add save and load func" />
+    <option name="LAST_COMMIT_MESSAGE" value="add save and load func" />
   </component>
 </project>
