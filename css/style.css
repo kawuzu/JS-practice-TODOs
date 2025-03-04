@@ -1,0 +1,191 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #b5D984;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #333;
+}
+
+#app {
+    margin: 50px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.column {
+    flex: 1;
+    margin: 0 10px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    font-size: 1.5em;
+    color:#144425;
+    margin-bottom: 15px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.card {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+
+.card:hover {
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+    border: solid 2px #82d1c5;
+}
+
+.card h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+.card ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+.card ul li {
+    margin: 8px 0;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+}
+
+.card input {
+    color:#144425;
+    margin-right: 10px;
+    accent-color: #144425;
+    transform: scale(1.2);
+}
+
+.card p {
+    font-size: 12px;
+    color: #144425;
+    margin-top: 10px;
+    text-align: center;
+}
+
+button {
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+input[type="text"] {
+    padding: 8px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 100%;
+    font-size: 14px;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-color: #144425;
+}
+
+.columns-container {
+    display: flex;
+    gap: 20px;
+}
+
+form {
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    width: 350px;
+    max-width: 400px;
+    box-sizing: border-box;
+}
+
+form div {
+    margin-bottom: 15px;
+}
+
+form label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+}
+
+form input {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+form input:focus {
+    outline: none;
+    border-color: #144425;
+}
+
+form button {
+    padding: 12px 20px;
+    background-color: #144425;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+form button:hover {
+    background-color: #46953D;
+}
+
+form button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+
+.timestamp {
+    font-size: 0.9em;
+    color: #666;
+    margin-left: 10px;
+}
+
+.completed-timestamp {
+    font-size: 1.1em;
+    color: green;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+
+
