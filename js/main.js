@@ -8,8 +8,8 @@ const Card = {
         completedAt: String,
         updateCard: Function,
         totalCardsInSecondColumn: Number,
-        isPriority: Boolean, // Параметр для определения приоритетности карточки
-        canEdit: Boolean, // Новый параметр для блокировки редактирования
+        isPriority: Boolean,
+        canEdit: Boolean,
     },
     computed: {
         completed() {
@@ -17,12 +17,12 @@ const Card = {
             return Math.floor((completedItems / this.list.length) * 100);
         },
         cardClass() {
-            return this.isPriority ? 'priority-card' : ''; // Применяем CSS класс для приоритетной карточки
+            return this.isPriority ? 'priority-card' : '';
         }
     },
     methods: {
         checkItem(index) {
-            if (!this.canEdit && !this.isPriority) return; // Блокируем редактирование, если нельзя редактировать и карточка не приоритетная
+            if (!this.canEdit && !this.isPriority) return;
 
             const item = this.list[index];
             item.timestamp = new Date().toLocaleString();
@@ -35,7 +35,8 @@ const Card = {
                 this.updateCard(this.index, this.column, { completedAt: completedTime });
             }
 
-            if (this.column === 1 && completed > 50) {
+            // Only move to second column if it's not full
+            if (this.column === 1 && completed > 50 && this.totalCardsInSecondColumn < 5) {
                 this.moveCard({ column: this.column, index: this.index }, 2);
             } else if (this.column === 2 && completed === 100) {
                 this.moveCard({ column: this.column, index: this.index }, 3);
@@ -47,7 +48,6 @@ const Card = {
             <h3>{{ title }}</h3>
             <ul>
                 <li v-for="(item, index) in list" :key="index">
-                    <!-- Если чекбокс заблокирован, то он будет неактивен -->
                     <input type="checkbox" v-model="item.done" 
                            @change="checkItem(index)" 
                            :disabled="!canEdit && !isPriority"/> 
@@ -65,9 +65,6 @@ const Card = {
     `
 };
 
-
-
-
 const Column = {
     props: {
         columnNumber: Number,
@@ -75,25 +72,31 @@ const Column = {
         moveCard: Function,
         updateCard: Function,
         totalCardsInSecondColumn: Number,
-        isPriorityCardInFirstColumn: Boolean, // Проверка на наличие приоритетной карточки в первом столбце
+        isPriorityCardInFirstColumn: Boolean,
     },
     components: { Card },
     computed: {
         sortedCards() {
-            // Сортируем карточки, приоритетные карточки будут на первом месте
             return this.cards.sort((a, b) => {
                 if (a.isPriority && !b.isPriority) return -1;
                 if (!a.isPriority && b.isPriority) return 1;
                 return 0;
             });
         },
-        // Определяем, блокировать ли чекбоксы в столбцах 1 и 2
         canEditCards() {
+            // Block editing in first column if second column is full and there's a card with >50% completion
+            if (this.columnNumber === 1 && this.totalCardsInSecondColumn >= 5) {
+                const hasProgressingCard = this.cards.some(card => {
+                    const completedItems = card.list.filter(item => item.done).length;
+                    return Math.floor((completedItems / card.list.length) * 100) > 50;
+                });
+                if (hasProgressingCard) return false;
+            }
+
             const isPriorityCardInFirstColumn = this.columnNumber === 1 && this.cards.some(card => card.isPriority);
             const isPriorityCardInSecondColumn = this.columnNumber === 2 && this.cards.some(card => card.isPriority);
-
-            // Если приоритетная карточка есть в первом или втором столбце, блокируем редактирование
-            const isPriorityInAnyOfFirstTwoColumns = this.$root.columns[0].cards.some(card => card.isPriority) || this.$root.columns[1].cards.some(card => card.isPriority);
+            const isPriorityInAnyOfFirstTwoColumns = this.$root.columns[0].cards.some(card => card.isPriority) ||
+                this.$root.columns[1].cards.some(card => card.isPriority);
 
             return !isPriorityInAnyOfFirstTwoColumns;
         }
@@ -127,7 +130,7 @@ const app = new Vue({
                 title: '',
                 list: ['', '', ''],
                 completedAt: null,
-                isPriority: false,  // Переменная для приоритетной карточки
+                isPriority: false,
             },
             columns: [
                 { cards: JSON.parse(localStorage.getItem('column1')) || [] },
@@ -143,6 +146,12 @@ const app = new Vue({
             this.saveData();
         },
         moveCard(cardIndex, columnIndex) {
+            // Check if trying to move to second column when it's full
+            if (columnIndex === 2 && this.columns[1].cards.length >= 5) {
+                alert('Второй столбец заполнен (максимум 5 карточек)');
+                return;
+            }
+
             const card = this.columns[cardIndex.column - 1].cards.splice(cardIndex.index, 1)[0];
             this.columns[columnIndex - 1].cards.push(card);
             this.saveData();
@@ -154,13 +163,8 @@ const app = new Vue({
                 const completedItems = card.list.filter(item => item.done).length;
                 return Math.floor((completedItems / card.list.length) * 100) > 50;
             });
-            const isPriorityCardInFirstColumn = this.columns[0].cards.some(card => card.isPriority);
 
-            if (secondColumnFull && firstColumnHasProgressingCard || isPriorityCardInFirstColumn) {
-                this.blockFirstColumn = true;
-            } else if (this.columns[1].cards.length < 5) {
-                this.blockFirstColumn = false;
-            }
+            this.blockFirstColumn = secondColumnFull && firstColumnHasProgressingCard;
         },
         saveData() {
             localStorage.setItem('column1', JSON.stringify(this.columns[0].cards));
@@ -190,13 +194,13 @@ const app = new Vue({
                 };
                 if (this.columns[0].cards.length < 3) {
                     this.columns[0].cards.push(newCard);
-                    this.columns[0].cards.sort((a, b) => a.isPriority ? -1 : 1); // Обеспечиваем, чтобы приоритетная карточка шла первой
+                    this.columns[0].cards.sort((a, b) => a.isPriority ? -1 : 1);
                     console.log('New card added:', newCard);
                 } else {
                     alert('В первом храниться не более 3-х карточек!');
                 }
                 this.saveData();
-                this.newCard = { title: '', list: ['', '', '', ''], isPriority: false };
+                this.newCard = { title: '', list: ['', '', ''], isPriority: false };
             } else {
                 alert('Введите заголовок и минимум 3 пункта!');
             }
@@ -237,5 +241,5 @@ const app = new Vue({
             />
         </div>
     </div>
-  `,
+    `,
 });
